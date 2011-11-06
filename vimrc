@@ -19,16 +19,17 @@
 
   map <F2> :w<CR>
   map <LEADER>w :bwipeout!<CR>
+  map <LEADER>w :close<CR>
   "imap <C-W> <C-o>:bwipeout!<CR>
 
 
-  function! CleverTab()
-     if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-     else
-    return "\<C-N>"
-  endfunction
-  inoremap <Tab> <C-R>=CleverTab()<CR>
+  "function! CleverTab()
+     "if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    "return "\<Tab>"
+     "else
+    "return "\<C-N>"
+  "endfunction
+  "inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
 
@@ -56,14 +57,68 @@
   iabbrev pdb; import pdb; pdb.set_trace()
   iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
 
-  map <LEADER>n :NERDTreeToggle %:p<CR>
 
-  set list
-  set listchars=tab:»·,trail:·
+  "set list
+  "set listchars=tab:»·,trail:·
 
   map <LEADER>F    :FufFile<CR>
   map <LEADER>f    :FufFileWithCurrentBufferDir<CR>
   map <LEADER>b    :FufBuffer<CR>
   map <LEADER>r    :FufRenewCache<CR>
+
+
+
+  let g:pad_dir = "~/notes/"
+
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  " let Vundle manage Vundle
+  " required! 
+  Bundle 'gmarik/vundle'
+
+  " My Bundles here:
+  "
+  " original repos on github
+  Bundle 'tpope/vim-fugitive'
+
+  Bundle 'vim-pad'
+  let g:pad_dir = "/home/bulkan/notes"
+
+  Bundle 'Markdown'
+  Bundle 'SuperTab'
+
+
+  Bundle 'L9'
+  Bundle 'FuzzyFinder'
+  map <LEADER>F    :FufFile<CR>
+  map <LEADER>f    :FufFileWithCurrentBufferDir<CR>
+  map <LEADER>b    :FufBuffer<CR>
+  map <LEADER>r    :FufRenewCache<CR>
+    
+  Bundle 'scrooloose/nerdcommenter'
+
+  Bundle 'nerdtree'
+  map <LEADER>n :NERDTreeToggle %:p<CR>
+
+  Bundle 'ack.vim'
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+  Bundle 'Python-Documentation'
+  Bundle 'pyflakes.vim'
+
+  Bundle 'mutewinter/vim-indent-guides'
+  let g:indent_guides_auto_colors =  1
+  let g:indent_guides_start_level =  2
+  let g:indent_guides_guide_size =  1
+
+
+  Bundle 'leshill/vim-json'
+  Bundle 'vim-ruby/vim-ruby'
+  Bundle 'tpope/vim-haml'
+  Bundle 'pangloss/vim-javascript'
+  Bundle 'itspriddle/vim-jquery'
+
+  Bundle 'python.vim'
 
   filetype plugin on

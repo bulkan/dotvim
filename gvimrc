@@ -1,14 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:   Bram Moolenaar <Bram@vim.org>
-" Last change:  2002 Sep 19
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"         for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"       for OpenVMS:  sys$login:.vimrc
-
 " When started as "evim", evim.vim will already have done these settings.
 
 
@@ -104,16 +93,17 @@ endif " has("autocmd")
 
   map <F2> :w<CR>
   map <LEADER>w :bwipeout!<CR>
+  map <LEADER>c :close<CR>
   "imap <C-W> <C-o>:bwipeout!<CR>
 
 
-  function! CleverTab()
-     if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-     else
-    return "\<C-N>"
-  endfunction
-  inoremap <Tab> <C-R>=CleverTab()<CR>
+  "function! CleverTab()
+  "   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+  "  return "\<Tab>"
+  "   else
+  "  return "\<C-N>"
+  "endfunction
+  "inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
 
@@ -141,15 +131,6 @@ endif " has("autocmd")
   iabbrev pdb; import pdb; pdb.set_trace()
   iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
 
-  map <LEADER>n :NERDTreeToggle %:p<CR>
 
-  set list
-  set listchars=tab:»·,trail:·
-
-  map <LEADER>F    :FufFile<CR>
-  map <LEADER>f    :FufFileWithCurrentBufferDir<CR>
-  map <LEADER>b    :FufBuffer<CR>
-  map <LEADER>r    :FufRenewCache<CR>
-
-  filetype plugin on
-
+  "set list
+  "set listchars=tab:»·,trail:·
