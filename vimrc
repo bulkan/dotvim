@@ -67,9 +67,6 @@
   map <LEADER>r    :FufRenewCache<CR>
 
 
-
-  let g:pad_dir = "~/notes/"
-
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
@@ -82,8 +79,8 @@
   " original repos on github
   Bundle 'tpope/vim-fugitive'
 
-  Bundle 'vim-pad'
-  let g:pad_dir = "/home/bulkan/notes"
+  "Bundle 'vim-pad'
+  "let g:pad_dir = "/home/bulkan/notes"
 
   Bundle 'Markdown'
   Bundle 'SuperTab'
@@ -98,20 +95,16 @@
     
   Bundle 'scrooloose/nerdcommenter'
 
+  Bundle 'scroolose/nerdtree'
   Bundle 'nerdtree'
   map <LEADER>n :NERDTreeToggle %:p<CR>
 
   Bundle 'ack.vim'
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
-  Bundle 'Python-Documentation'
-  Bundle 'pyflakes.vim'
 
   Bundle 'mutewinter/vim-indent-guides'
   let g:indent_guides_auto_colors =  1
-  let g:indent_guides_start_level =  2
-  let g:indent_guides_guide_size =  1
-
+  "let g:indent_guides_start_level =  2
+  "let g:indent_guides_guide_size =  1
 
   Bundle 'leshill/vim-json'
   Bundle 'vim-ruby/vim-ruby'
@@ -119,6 +112,27 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'itspriddle/vim-jquery'
 
+  Bundle 'ShowMarks'
+  Bundle 'SearchComplate'
+
+  " Python stuff
   Bundle 'python.vim'
+
+  Bundle 'vim_django'
+  map <Leader>dt :VimDjangoCommandTTemplate<CR>
+  map <Leader>da :VimDjangoCommandTApp<CR>
+
+  Bundle 'django.vim'
+  Bundle 'Python-Documentation'
+  Bundle 'pyflakes.vim'
+
+
+  Bundle 'kien/ctrlp.vim'
+
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
+  set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
+
+  Bundle 'Gundo'
+  nnoremap <F5> :GundoToggle<CR>
 
   filetype plugin on
