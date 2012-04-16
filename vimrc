@@ -3,6 +3,7 @@
   set ai
 
 " set my colorscheme to that of lilac 
+  color leo
   set sw=4
   set tw=1000
   set tabstop=4
@@ -112,7 +113,7 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'itspriddle/vim-jquery'
 
-  Bundle 'ShowMarks'
+  "Bundle 'ShowMarks'
   Bundle 'SearchComplate'
 
   " Python stuff
@@ -132,7 +133,18 @@
   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
   set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
 
-  Bundle 'Gundo'
-  nnoremap <F5> :GundoToggle<CR>
+  "Bundle 'Gundo'
+  "nnoremap <F5> :GundoToggle<CR>
+
+  Bundle 'kien/tabman.vim'
+  let g:tabman_toggle = '<leader>tt'
+  let g:tabman_focus  = '<leader>tf'
+
+  Bundle 'pep8'
+
+
+  set incsearch
+  set hlsearch
 
   filetype plugin on
+
