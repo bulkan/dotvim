@@ -3,6 +3,7 @@
   set ai
 
 " set my colorscheme to that of lilac 
+  color leo
   set sw=4
   set tw=1000
   set tabstop=4
@@ -80,7 +81,7 @@
   Bundle 'tpope/vim-fugitive'
 
   "Bundle 'vim-pad'
- " let g:pad_dir = "/home/bulkan/notes"
+  "let g:pad_dir = "/home/bulkan/notes"
 
   Bundle 'Markdown'
   Bundle 'SuperTab'
@@ -99,16 +100,11 @@
   map <LEADER>n :NERDTreeToggle %:p<CR>
 
   Bundle 'ack.vim'
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
-  Bundle 'Python-Documentation'
-  Bundle 'pyflakes.vim'
 
   Bundle 'mutewinter/vim-indent-guides'
   let g:indent_guides_auto_colors =  1
-  let g:indent_guides_start_level =  2
-  let g:indent_guides_guide_size =  1
-
+  "let g:indent_guides_start_level =  2
+  "let g:indent_guides_guide_size =  1
 
   Bundle 'leshill/vim-json'
   Bundle 'vim-ruby/vim-ruby'
@@ -116,6 +112,38 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'itspriddle/vim-jquery'
 
+  "Bundle 'ShowMarks'
+  Bundle 'SearchComplate'
+
+  " Python stuff
   Bundle 'python.vim'
 
+  Bundle 'vim_django'
+  map <Leader>dt :VimDjangoCommandTTemplate<CR>
+  map <Leader>da :VimDjangoCommandTApp<CR>
+
+  Bundle 'django.vim'
+  Bundle 'Python-Documentation'
+  Bundle 'pyflakes.vim'
+
+
+  Bundle 'kien/ctrlp.vim'
+
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
+  set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
+
+  "Bundle 'Gundo'
+  "nnoremap <F5> :GundoToggle<CR>
+
+  Bundle 'kien/tabman.vim'
+  let g:tabman_toggle = '<leader>tt'
+  let g:tabman_focus  = '<leader>tf'
+
+  Bundle 'pep8'
+
+
+  set incsearch
+  set hlsearch
+
   filetype plugin on
+
