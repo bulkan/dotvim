@@ -140,6 +140,9 @@
   let g:tabman_focus  = '<leader>tf'
 
   Bundle 'pep8'
+  let g:pep8_map = '<leader>pp' 
+
+
 
 
   set incsearch
