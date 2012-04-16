@@ -143,10 +143,9 @@
   "let g:pep8_map = '<leader>pp' 
   "
 
-  Bundle 'vim-flake8'
+  Bundle 'nvie/vim-flake8'
+  let g:flake8_ignore = 'E501,W293'
   autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
-
-
 
 
   set incsearch
