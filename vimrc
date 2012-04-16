@@ -139,8 +139,12 @@
   let g:tabman_toggle = '<leader>tt'
   let g:tabman_focus  = '<leader>tf'
 
-  Bundle 'pep8'
-  let g:pep8_map = '<leader>pp' 
+  "Bundle 'pep8'
+  "let g:pep8_map = '<leader>pp' 
+  "
+
+  Bundle 'vim-flake8'
+  autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
 
 
