@@ -67,9 +67,6 @@
   map <LEADER>r    :FufRenewCache<CR>
 
 
-
-  let g:pad_dir = "~/notes/"
-
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
@@ -82,8 +79,8 @@
   " original repos on github
   Bundle 'tpope/vim-fugitive'
 
-  Bundle 'vim-pad'
-  let g:pad_dir = "/home/bulkan/notes"
+  "Bundle 'vim-pad'
+ " let g:pad_dir = "/home/bulkan/notes"
 
   Bundle 'Markdown'
   Bundle 'SuperTab'
@@ -98,7 +95,7 @@
     
   Bundle 'scrooloose/nerdcommenter'
 
-  Bundle 'nerdtree'
+  Bundle 'scrooloose/nerdtree'
   map <LEADER>n :NERDTreeToggle %:p<CR>
 
   Bundle 'ack.vim'
