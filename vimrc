@@ -3,7 +3,7 @@
   set ai
 
 " set my colorscheme to that of lilac 
-  color leo
+  color desertEx
   set sw=4
   set tw=1000
   set tabstop=4
@@ -19,8 +19,8 @@
   set wildmenu
 
   map <F2> :w<CR>
-  map <LEADER>w :bwipeout!<CR>
-  map <LEADER>w :close<CR>
+  map <LEADER>w :bd!<CR>
+  "map <LEADER>w :close<CR>
   "imap <C-W> <C-o>:bwipeout!<CR>
 
 
@@ -89,10 +89,11 @@
 
   Bundle 'L9'
   Bundle 'FuzzyFinder'
-  map <LEADER>F    :FufFile<CR>
-  map <LEADER>f    :FufFileWithCurrentBufferDir<CR>
-  map <LEADER>b    :FufBuffer<CR>
-  map <LEADER>r    :FufRenewCache<CR>
+  map <LEADER>F :FufFile<CR>
+  map <LEADER>f :FufFileWithCurrentBufferDir<CR>
+  map <LEADER>b :FufBuffer<CR>
+  map <LEADER>r :FufRenewCache<CR>
+  map <LEADER>cl :FufChangeList<CR>
     
   Bundle 'scrooloose/nerdcommenter'
 
