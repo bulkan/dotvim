@@ -78,7 +78,6 @@
   " My Bundles here:
   "
   " original repos on github
-  Bundle 'tpope/vim-fugitive'
 
   "Bundle 'vim-pad'
   "let g:pad_dir = "/home/bulkan/notes"
@@ -130,8 +129,8 @@
 
   Bundle 'kien/ctrlp.vim'
 
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
-  set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
+  "set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
+  "set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
 
   "Bundle 'Gundo'
   "nnoremap <F5> :GundoToggle<CR>
@@ -152,5 +151,7 @@
   set incsearch
   set hlsearch
 
+
+  Bundle 'tpope/vim-fugitive'
   filetype plugin on
 
