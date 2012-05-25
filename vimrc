@@ -113,7 +113,7 @@
   Bundle 'itspriddle/vim-jquery'
 
   "Bundle 'ShowMarks'
-  Bundle 'SearchComplate'
+  "Bundle 'SearchComplate'
 
   " Python stuff
   Bundle 'python.vim'
@@ -124,8 +124,14 @@
 
   Bundle 'django.vim'
   Bundle 'Python-Documentation'
-  Bundle 'pyflakes.vim'
+  "Bundle 'pyflakes.vim'
+  "
 
+  Bundle 'scrooloose/syntastic'
+  let g:syntastic_mode_map = { 'mode': 'active',
+                             \ 'active_filetypes': ['ruby', 'python','cpp'],}
+  let g:syntastic_enable_balloons=1
+  let g:syntastic_quiet_warnings=1
 
   Bundle 'kien/ctrlp.vim'
 
@@ -143,9 +149,9 @@
   "let g:pep8_map = '<leader>pp' 
   "
 
-  Bundle 'nvie/vim-flake8'
-  let g:flake8_ignore = 'E501,W293'
-  autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
+  "Bundle 'nvie/vim-flake8'
+  "let g:flake8_ignore = 'E501,W293'
+  "autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
 
   set incsearch
