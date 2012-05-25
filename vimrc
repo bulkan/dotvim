@@ -1,3 +1,17 @@
+  set nocompatible
+  filetype off
+
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  " let Vundle manage Vundle
+  " required! 
+  Bundle 'gmarik/vundle'
+
+
+  set showcmd
+  set showmode
+  
   syntax on
   set ai
 
@@ -15,6 +29,7 @@
   set ic
   set mousef
   set autoread
+  set wildmode=list:longest
   set wildmenu
 
   map <F2> :w<CR>
@@ -46,22 +61,15 @@
   iabbrev pdb; import pdb; pdb.set_trace()
   iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
 
-  "set list
-  "set listchars=tab:»·,trail:·
+  set list
+  set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
 
   set incsearch
   set hlsearch
-  
-  set nocompatible
-  filetype off
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
 
-  " let Vundle manage Vundle
-  " required! 
-  Bundle 'gmarik/vundle'
-
+  "Bundle config
 
   Bundle 'SuperTab'
 
@@ -116,8 +124,7 @@
   "let g:flake8_ignore = 'E501,W293'
   "autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
-
   Bundle 'scrooloose/nerdtree'
-  map <LEADER>n :NERDTreeToggle %:p<CR>
+  map <LEADER>t :NERDTreeToggle %:p<CR>
   Bundle 'tpope/vim-fugitive'
   filetype plugin on
