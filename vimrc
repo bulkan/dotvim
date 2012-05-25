@@ -1,9 +1,8 @@
-"get syntax highlighting
   syntax on
   set ai
 
-" set my colorscheme to that of lilac 
   color desertEx
+
   set sw=4
   set tw=1000
   set tabstop=4
@@ -20,19 +19,8 @@
 
   map <F2> :w<CR>
   map <LEADER>w :bd!<CR>
-  "map <LEADER>w :close<CR>
+  map <LEADER>c :close<CR>
   "imap <C-W> <C-o>:bwipeout!<CR>
-
-
-  "function! CleverTab()
-     "if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    "return "\<Tab>"
-     "else
-    "return "\<C-N>"
-  "endfunction
-  "inoremap <Tab> <C-R>=CleverTab()<CR>
-
-
 
   map <M-1> :tabn 1<cr>
   map <M-2> :tabn 2<cr>
@@ -58,15 +46,14 @@
   iabbrev pdb; import pdb; pdb.set_trace()
   iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
 
-
   "set list
   "set listchars=tab:»·,trail:·
 
-  map <LEADER>F    :FufFile<CR>
-  map <LEADER>f    :FufFileWithCurrentBufferDir<CR>
-  map <LEADER>b    :FufBuffer<CR>
-  map <LEADER>r    :FufRenewCache<CR>
-
+  set incsearch
+  set hlsearch
+  
+  set nocompatible
+  filetype off
 
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
@@ -75,16 +62,8 @@
   " required! 
   Bundle 'gmarik/vundle'
 
-  " My Bundles here:
-  "
-  " original repos on github
 
-  "Bundle 'vim-pad'
-  "let g:pad_dir = "/home/bulkan/notes"
-
-  Bundle 'Markdown'
   Bundle 'SuperTab'
-
 
   Bundle 'L9'
   Bundle 'FuzzyFinder'
@@ -93,27 +72,22 @@
   map <LEADER>b :FufBuffer<CR>
   map <LEADER>r :FufRenewCache<CR>
   map <LEADER>cl :FufChangeList<CR>
-    
-  Bundle 'scrooloose/nerdcommenter'
 
-  Bundle 'scrooloose/nerdtree'
-  map <LEADER>n :NERDTreeToggle %:p<CR>
+  Bundle 'scrooloose/nerdcommenter'
 
   Bundle 'ack.vim'
 
   Bundle 'mutewinter/vim-indent-guides'
   let g:indent_guides_auto_colors =  1
-  "let g:indent_guides_start_level =  2
-  "let g:indent_guides_guide_size =  1
 
   Bundle 'leshill/vim-json'
   Bundle 'vim-ruby/vim-ruby'
   Bundle 'tpope/vim-haml'
+  Bundle 'tpope/vim-markdown'
+  Bundle 'tpope/vim-git'
   Bundle 'pangloss/vim-javascript'
   Bundle 'itspriddle/vim-jquery'
 
-  "Bundle 'ShowMarks'
-  "Bundle 'SearchComplate'
 
   " Python stuff
   Bundle 'python.vim'
@@ -124,8 +98,6 @@
 
   Bundle 'django.vim'
   Bundle 'Python-Documentation'
-  "Bundle 'pyflakes.vim'
-  "
 
   Bundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = { 'mode': 'active',
@@ -135,29 +107,17 @@
 
   Bundle 'kien/ctrlp.vim'
 
-  "set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
-  "set wildignore+=.git\*,.hg\*,.svn\*         " for Windows
-
-  "Bundle 'Gundo'
-  "nnoremap <F5> :GundoToggle<CR>
-
   Bundle 'kien/tabman.vim'
   let g:tabman_toggle = '<leader>tt'
   let g:tabman_focus  = '<leader>tf'
 
-  "Bundle 'pep8'
-  "let g:pep8_map = '<leader>pp' 
-  "
 
   "Bundle 'nvie/vim-flake8'
   "let g:flake8_ignore = 'E501,W293'
   "autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
 
-  set incsearch
-  set hlsearch
-
-
+  Bundle 'scrooloose/nerdtree'
+  map <LEADER>n :NERDTreeToggle %:p<CR>
   Bundle 'tpope/vim-fugitive'
   filetype plugin on
-
