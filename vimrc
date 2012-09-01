@@ -1,4 +1,5 @@
   set nocompatible
+  
   filetype off
 
   set rtp+=~/.vim/bundle/vundle/
@@ -123,10 +124,12 @@
   let g:tabman_toggle = '<leader>tt'
   let g:tabman_focus  = '<leader>tf'
 
-  Bundle 'myusuf3/numbers.vim'
+  "Bundle 'myusuf3/numbers.vim'
 
-  nnoremap <Leader>N :NumbersToggle<CR>
+  "nnoremap <Leader>N :NumbersToggle<CR>
+  "
 
+  nnoremap set pastetoggle=<F4>
 
 
   "Bundle 'nvie/vim-flake8'
