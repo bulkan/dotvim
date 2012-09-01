@@ -73,6 +73,10 @@
 
   Bundle 'SuperTab'
 
+  Bundle 'sontek/rope-vim'
+  let g:ropevim_vim_completion=1
+  let g:ropevim_extended_complete=1
+
   Bundle 'L9'
   Bundle 'FuzzyFinder'
   map <LEADER>F :FufFile<CR>
@@ -119,6 +123,11 @@
   let g:tabman_toggle = '<leader>tt'
   let g:tabman_focus  = '<leader>tf'
 
+  Bundle 'myusuf3/numbers.vim'
+
+  nnoremap <Leader>N :NumbersToggle<CR>
+
+
 
   "Bundle 'nvie/vim-flake8'
   "let g:flake8_ignore = 'E501,W293'
@@ -127,4 +136,6 @@
   Bundle 'scrooloose/nerdtree'
   map <LEADER>t :NERDTreeToggle %:p<CR>
   Bundle 'tpope/vim-fugitive'
+
+  autocmd BufEnter * silent! lcd %:p:h
   filetype plugin on
