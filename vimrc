@@ -131,6 +131,8 @@
 
   nnoremap set pastetoggle=<F4>
 
+  map <LEADER>G :Gstatus<CR>
+
 
   "Bundle 'nvie/vim-flake8'
   "let g:flake8_ignore = 'E501,W293'
