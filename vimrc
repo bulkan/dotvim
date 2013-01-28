@@ -70,6 +70,8 @@
   set hlsearch
 
 
+  au BufRead,BufNewFile *.go set filetype=go
+
   "Bundle config
 
   Bundle 'SuperTab'
@@ -80,11 +82,11 @@
 
   Bundle 'L9'
   Bundle 'FuzzyFinder'
-  map <LEADER>F :FufFile<CR>
-  map <LEADER>f :FufFileWithCurrentBufferDir<CR>
-  map <LEADER>b :FufBuffer<CR>
-  map <LEADER>r :FufRenewCache<CR>
-  map <LEADER>cl :FufChangeList<CR>
+  noremap <LEADER>F :FufFile<CR>
+  noremap <LEADER>f :FufFileWithCurrentBufferDir<CR>
+  noremap <LEADER>b :FufBuffer<CR>
+  noremap <LEADER>r :FufRenewCache<CR>
+  noremap <LEADER>cl :FufChangeList<CR>
 
   Bundle 'scrooloose/nerdcommenter'
 
@@ -127,12 +129,18 @@
   "Bundle 'myusuf3/numbers.vim'
 
   "nnoremap <Leader>N :NumbersToggle<CR>
-  "
+
+  Bundle 'goldfeld/vim-seek'
+
+  Bundle 'ScrollColors'
+
+  Bundle 'Color-Sampler-Pack'
+
+
 
   nnoremap set pastetoggle=<F4>
 
   map <LEADER>G :Gstatus<CR>
-
 
   "Bundle 'nvie/vim-flake8'
   "let g:flake8_ignore = 'E501,W293'
@@ -141,6 +149,8 @@
   Bundle 'scrooloose/nerdtree'
   map <LEADER>t :NERDTreeToggle %:p<CR>
   Bundle 'tpope/vim-fugitive'
+
+  set backspace=indent,eol,start
 
   autocmd BufEnter * silent! lcd %:p:h
   filetype plugin on
