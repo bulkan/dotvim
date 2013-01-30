@@ -82,7 +82,7 @@
 
   Bundle 'L9'
   Bundle 'FuzzyFinder'
-  noremap <LEADER>F :FufFile<CR>
+  noremap <LEADER>F :FufFileWithFullCwd<CR>
   noremap <LEADER>f :FufFileWithCurrentBufferDir<CR>
   noremap <LEADER>b :FufBuffer<CR>
   noremap <LEADER>r :FufRenewCache<CR>
