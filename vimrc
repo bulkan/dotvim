@@ -114,13 +114,36 @@
   Bundle 'django.vim'
   Bundle 'Python-Documentation'
 
-  Bundle 'scrooloose/syntastic'
-  let g:syntastic_mode_map = { 'mode': 'active',
-                             \ 'active_filetypes': ['ruby', 'python','cpp'],}
-  let g:syntastic_enable_balloons=1
-  let g:syntastic_quiet_warnings=1
+  "Bundle 'scrooloose/syntastic'
+  "let g:syntastic_mode_map = { 'mode': 'active',
+                             "\ 'active_filetypes': ['ruby', 'python','cpp'],}
+  "let g:syntastic_enable_balloons=1
+  "let g:syntastic_quiet_warnings=1
 
   Bundle 'kien/ctrlp.vim'
+  nmap <LEADER>g :CtrlPBufTag<CR>
+  nmap <LEADER>G :CtrlPBufTagAll<CR>
+  nmap <LEADER>f :CtrlPLine<CR>
+  nmap <LEADER>m :CtrlPMRUFiles<CR>
+  " to be able to call CtrlP with default search text
+  function! CtrlPWithSearchText(search_text, ctrlp_command_end)
+      execute ':CtrlP' . a:ctrlp_command_end
+      call feedkeys(a:search_text)
+  endfunction
+  " CtrlP with default text
+  nmap <LEADER>pg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
+  nmap <LEADER>pG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
+  nmap <LEADER>pf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
+  nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
+  nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
+  nmap <LEADER>pm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+  " Don't change working directory
+  let g:ctrlp_working_path_mode = 0
+  " Ignore files on fuzzy finder
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+    \ 'file': '\.pyc$\|\.pyo$',
+    \ }
 
   Bundle 'kien/tabman.vim'
   let g:tabman_toggle = '<leader>tt'
@@ -136,15 +159,13 @@
 
   Bundle 'Color-Sampler-Pack'
 
-
-
   nnoremap set pastetoggle=<F4>
 
   map <LEADER>G :Gstatus<CR>
 
-  "Bundle 'nvie/vim-flake8'
-  "let g:flake8_ignore = 'E501,W293'
-  "autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
+  Bundle 'nvie/vim-flake8'
+  let g:flake8_ignore = 'E501,W293'
+  autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
   Bundle 'scrooloose/nerdtree'
   map <LEADER>t :NERDTreeToggle %:p<CR>
