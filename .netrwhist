@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='E:\Bamboo\bin'
 let g:netrw_dirhist_2='C:\Users\bevcimen\.VirtualBox\Machines\Ubuntu'
 let g:netrw_dirhist_3='C:\ProgramData\STR\SuperADMIN\server\logs'
+let g:netrw_dirhist_4='/home/bulkan/.byobu'
