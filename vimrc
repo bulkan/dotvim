@@ -1,5 +1,5 @@
   set nocompatible
-  
+
   filetype off
 
   set rtp+=~/.vim/bundle/vundle/
@@ -10,13 +10,18 @@
   Bundle 'gmarik/vundle'
 
 
+  if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+      set t_Co=256
+  endif
+
   set showcmd
   set showmode
   
   syntax on
   set ai
 
-  color desertEx
+  "color desertEx
+  color inkpot
 
   set sw=4
   set tw=1000
@@ -123,7 +128,7 @@
   Bundle 'kien/ctrlp.vim'
   nmap <LEADER>g :CtrlPBufTag<CR>
   nmap <LEADER>G :CtrlPBufTagAll<CR>
-  nmap <LEADER>f :CtrlPLine<CR>
+  nmap <LEADER>pf :CtrlPLine<CR>
   nmap <LEADER>m :CtrlPMRUFiles<CR>
   " to be able to call CtrlP with default search text
   function! CtrlPWithSearchText(search_text, ctrlp_command_end)
@@ -144,6 +149,8 @@
     \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
     \ 'file': '\.pyc$\|\.pyo$',
     \ }
+
+  let g:ctrlp_root_markers = 'env'
 
   Bundle 'kien/tabman.vim'
   let g:tabman_toggle = '<leader>tt'
@@ -167,11 +174,55 @@
   let g:flake8_ignore = 'E501,W293'
   autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
-  Bundle 'scrooloose/nerdtree'
-  map <LEADER>t :NERDTreeToggle %:p<CR>
+ " Bundle 'scrooloose/nerdtree'
+ " map <LEADER>t :NERDTreeToggle %:p<CR>
   Bundle 'tpope/vim-fugitive'
 
   set backspace=indent,eol,start
 
+  " Python mode (indentation, doc, refactor, lints, code checking, motion and
+  " " operators, highlighting, run and ipdb breakpoints)
+  Bundle 'klen/python-mode'
+  " python-mode settings
+
+  " don't show lint result every time we save a file
+  let g:pymode_lint_write = 0
+  " rules to ignore (example: "E501,W293")
+  let g:pymode_lint_ignore = ""
+  " don't add extra column for error icons (on console vim creates a 2-char-wide
+  " extra column)
+  let g:pymode_lint_signs = 0
+  " don't fold python code on open
+  let g:pymode_folding = 0
+
+  " Autoclose
+  Bundle 'Townk/vim-autoclose'
+
+  " tab navigation
+  map tn :tabn<CR>
+  map tp :tabp<CR>
+  map tm :tabm 
+  map tt :tabnew<CR>
+  map <C-S-Right> :tabn<CR>
+  imap <C-S-Right> <ESC>:tabn<CR>
+  map <C-S-Left> :tabp<CR>
+  imap <C-S-Left> <ESC>:tabp<CR>
+
+  Bundle 'Lokaltog/vim-powerline'
+
+  set ls=2
+
+  "Bundle 'airblade/vim-gitgutter'
+
   autocmd BufEnter * silent! lcd %:p:h
+
+  autocmd FileType ruby
+          \ if expand('%') =~# '_test\.rb$' |
+          \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+          \ elseif expand('%') =~# '_spec\.rb$' |
+          \  compiler rspec | setl makeprg=rspec\ \"%:p\" |
+          \ else |
+          \  compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+          \ endif
+
   filetype plugin on
