@@ -1,1 +1,8 @@
 bundle/*
+autoload/
+ftdetect/
+ftplugin/
+indent/
+plugin/godoc.vim
+readme.txt
+syntax/
