@@ -126,10 +126,11 @@
   "let g:syntastic_quiet_warnings=1
 
   Bundle 'kien/ctrlp.vim'
-  nmap <LEADER>g :CtrlPBufTag<CR>
-  nmap <LEADER>G :CtrlPBufTagAll<CR>
+  nmap <LEADER>pg :CtrlPBufTag<CR>
+  nmap <LEADER>pG :CtrlPBufTagAll<CR>
   nmap <LEADER>pf :CtrlPLine<CR>
-  nmap <LEADER>m :CtrlPMRUFiles<CR>
+  nmap <LEADER>pm :CtrlPMRUFiles<CR>
+
   " to be able to call CtrlP with default search text
   function! CtrlPWithSearchText(search_text, ctrlp_command_end)
       execute ':CtrlP' . a:ctrlp_command_end
@@ -165,6 +166,8 @@
   Bundle 'ScrollColors'
 
   Bundle 'Color-Sampler-Pack'
+
+  "Bundle 'snipMate'
 
   nnoremap set pastetoggle=<F4>
 
