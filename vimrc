@@ -10,9 +10,16 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
+Bundle 'altercation/vim-colors-solarized'
+set background=dark
+colorscheme solarized
+
+
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
   set t_Co=256
-  color desert256
+  "color desert256
+    let g:solarized_termcolors=256
+    color solarized
 endif
 
 set showcmd
@@ -22,12 +29,12 @@ syntax on
 set ai
 
 
-if $TERM == "screen-bce"
-    color desert256
-endif
+"if $TERM == "screen-bce"
+    "color desert256
+    let g:solarized_termcolors=256
+"endif
 
 "color desertEx
-color desert
 
 set sw=4
 set tw=1000
@@ -229,6 +236,8 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_theme='badwolf'
 
+let g:airline_enable_fugitive=0
+
 
 set ls=2
 
@@ -243,12 +252,12 @@ autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 0
 autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
+
 Bundle 'rstacruz/sparkup'
 
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'wavded/vim-stylus'
-
 
 autocmd BufEnter * silent! lcd %:p:h
 
