@@ -47,7 +47,7 @@ I've installed the following plugins
 
 1. Install 3rd party plugins
   
-    Launch `vim`, then run `:BundleInstall`
+    Launch `vim +BundleInstall`
 
 
 
