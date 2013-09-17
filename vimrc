@@ -10,16 +10,16 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
-set background=dark
-colorscheme solarized
+"Bundle 'altercation/vim-colors-solarized'
+"set background=dark
+"colorscheme solarized
 
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
   set t_Co=256
-  "color desert256
-    let g:solarized_termcolors=256
-    color solarized
+    color lucius
+    "let g:solarized_termcolors=256
+    "color solarized
 endif
 
 set showcmd
@@ -30,12 +30,13 @@ set ai
 
 
 "if $TERM == "screen-bce"
-    "color desert256
-    let g:solarized_termcolors=256
+    color lucius
+    "let g:solarized_termcolors=256
 "endif
 
 "color desertEx
 
+set cursorline
 set sw=4
 set tw=1000
 set tabstop=4
