@@ -30,26 +30,24 @@ I've installed the following plugins
     mv ~./vim ~/.vim_back_up
     ```
 
-1. Download the code
+2. Download the code
 
     ```sh
     git clone git://github.com/bulkan/dotvim.git ~/.vim
-    cd ~/.vim; sudo pip install -r requirements.txt
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     ```
+    
+3. Optionally
+   
+   cd ~/.vim; sudo pip install -r requirements.txt
 
 
-1. Create a symlink, if it doesn't already exist
+4. Create a symlink, if it doesn't already exist
 
     ```sh
     ln -s ~/.vim/vimrc ~/.vimrc
     ```
 
-1. Install 3rd party plugins
+5. Install 3rd party plugins
   
-    Launch `vim +BundleInstall`
-
-
-
-
-
+   `vim +BundleInstall`
