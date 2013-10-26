@@ -90,6 +90,7 @@ set hlsearch
 
 
 au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.hdbs set filetype=handlebars
 
 "Bundle config
 
@@ -119,6 +120,8 @@ Bundle 'tpope/vim-git'
 Bundle 'pangloss/vim-javascript'
 Bundle "jelera/vim-javascript-syntax"
 Bundle 'itspriddle/vim-jquery'
+
+Bundle 'nono/vim-handlebars'
 
 
 " Python stuff
