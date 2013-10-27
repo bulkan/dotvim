@@ -89,8 +89,6 @@ set incsearch
 set hlsearch
 
 
-au BufRead,BufNewFile *.go set filetype=go
-au BufRead,BufNewFile *.hdbs set filetype=handlebars
 
 "Bundle config
 
@@ -112,7 +110,6 @@ Bundle 'ack.vim'
 "Bundle 'mutewinter/vim-indent-guides'
 "let g:indent_guides_auto_colors =  1
 
-Bundle 'leshill/vim-json'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
@@ -122,6 +119,12 @@ Bundle "jelera/vim-javascript-syntax"
 Bundle 'itspriddle/vim-jquery'
 
 Bundle 'nono/vim-handlebars'
+
+Bundle 'elzr/vim-json'
+
+au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.hdbs set filetype=handlebars
 
 
 " Python stuff
