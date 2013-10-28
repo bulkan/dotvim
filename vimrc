@@ -122,9 +122,13 @@ Bundle 'nono/vim-handlebars'
 
 Bundle 'elzr/vim-json'
 
+" for ejs support
+Bundle 'briancollins/vim-jst'
+
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.hdbs set filetype=handlebars
+au BufRead,BufNewFile *.ejs set filetype=jst
 
 
 " Python stuff
