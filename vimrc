@@ -1,22 +1,27 @@
 set nocompatible
-filetype plugin on
+set shell=/bin/sh
+"filetype plugin on
 
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-"Bundle 'altercation/vim-colors-solarized'
+
+Plugin 'tomasr/molokai'
+
+"Plugin 'altercation/vim-colors-solarized'
 "set background=dark
 "colorscheme solarized
 
+set hidden
+set t_Co=256
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-  set t_Co=256
     color lucius
     "let g:solarized_termcolors=256
     "color solarized
@@ -33,8 +38,6 @@ set ai
     color lucius
     "let g:solarized_termcolors=256
 "endif
-
-"color desertEx
 
 set cursorline
 set sw=4
@@ -54,7 +57,6 @@ set wildmenu
 
 map <F2> :w<CR>
 map <LEADER>w :bd!<CR>
-map <LEADER>c :close<CR>
 "imap <C-W> <C-o>:bwipeout!<CR>
 
 map <M-1> :tabn 1<cr>
@@ -81,124 +83,141 @@ imap <M-9> <C-o>:tabn 9<cr>
 iabbrev pdb; import pdb; pdb.set_trace()
 iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
 
-set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"set list
+"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 
 set incsearch
 set hlsearch
 
+Plugin 'ScrollColors'
+
+Plugin 'Color-Sampler-Pack'
+
+"Plugin config
+
+"Plugin 'SuperTab'
+
+Plugin 'ervandew/supertab'
 
 
-"Bundle config
-
-Bundle 'SuperTab'
-
-
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 noremap <LEADER>F :FufFileWithFullCwd<CR>
 noremap <LEADER>f :FufFileWithCurrentBufferDir<CR>
 noremap <LEADER>b :FufBuffer<CR>
 noremap <LEADER>r :FufRenewCache<CR>
 noremap <LEADER>cl :FufChangeList<CR>
 
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+map <LEADER>nt :NERDTreeToggle %:p<CR>
+map <LEADER>' :NERDTreeToggle ~/src<CR>
 
-Bundle 'ack.vim'
+Plugin 'ack.vim'
 
-"Bundle 'mutewinter/vim-indent-guides'
+"Plugin 'mutewinter/vim-indent-guides'
 "let g:indent_guides_auto_colors =  1
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-git'
-Bundle 'pangloss/vim-javascript'
-Bundle "jelera/vim-javascript-syntax"
-Bundle 'itspriddle/vim-jquery'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-git'
+Plugin 'pangloss/vim-javascript'
+"Plugin "jelera/vim-javascript-syntax", {name: 'vim-js'}
+Plugin 'itspriddle/vim-jquery'
 
-Bundle 'nono/vim-handlebars'
+Plugin 'nono/vim-handlebars'
 
-Bundle 'elzr/vim-json'
+Plugin 'digitaltoad/vim-jade'
+
+"Plugin 'elzr/vim-json'
 
 " for ejs support
-Bundle 'briancollins/vim-jst'
+Plugin 'briancollins/vim-jst'
 
-au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.hdbs set filetype=handlebars
 au BufRead,BufNewFile *.ejs set filetype=jst
+au BufRead,BufNewFile *.jade set filetype=jade
 
 
 " Python stuff
-Bundle 'python.vim'
+Plugin 'python.vim'
 
-"Bundle 'scrooloose/syntastic'
-""let g:syntastic_javascript_checkers = ['jslint']
-"let g:syntastic_mode_map = { 'mode': 'active',
-                         "\ 'active_filetypes': ['ruby', 'python','cpp','javascript'],}
-"let g:syntastic_enable_balloons=1
-"let g:syntastic_quiet_warnings=1
+Plugin 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_mode_map = { 'mode': 'active',
+                         \ 'active_filetypes': ['javascript'],}
+let g:syntastic_ignore_files = ['\m\c\.html$']
+let g:syntastic_enable_balloons=1
 
-Bundle 'kien/ctrlp.vim'
-nmap <LEADER>pp :CtrlPCurFile<CR>
+"let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_javascript_jslint_ignore_errors = ["'describe' was used before it was defined.", "'it' was used before it was defined."]
+let g:syntastic_jslint_ignore_errors = ["'describe' was used before it was defined.", "'it' was used before it was defined."]
+
+Plugin 'kien/ctrlp.vim'
+"nmap <LEADER>p :CtrlP<CR>
 nmap <LEADER>pg :CtrlPBufTag<CR>
 nmap <LEADER>pG :CtrlPBufTagAll<CR>
 nmap <LEADER>pf :CtrlPLine<CR>
 nmap <LEADER>pm :CtrlPMRUFiles<CR>
 
 " to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-  execute ':CtrlP' . a:ctrlp_command_end
-  call feedkeys(a:search_text)
-endfunction
+"function! CtrlPWithSearchText(search_text, ctrlp_command_end)
+"  execute ':CtrlP' . a:ctrlp_command_end
+"  call feedkeys(a:search_text)
+"endfunction
+
 " CtrlP with default text
-nmap <LEADER>pg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap <LEADER>pG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-nmap <LEADER>pf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-nmap <LEADER>pm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+"nmap <LEADER>pg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
+"nmap <LEADER>pG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
+"nmap <LEADER>pf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
+"nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
+"nmap <LEADER>pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
+"nmap <LEADER>pm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+
 " Don't change working directory
-let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_working_path_mode = 0
+
 " Ignore files on fuzzy finder
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+\ 'dir':  'node_modules\|vendor\|git',
 \ 'file': '\.pyc$\|\.pyo$',
 \ }
 
-let g:ctrlp_root_markers = 'env'
+let g:ctrlp_root_markers = 'src'
 
-Bundle 'kien/tabman.vim'
+let g:ctrlp_working_path_mode = 'rc'
+
+"map <leader>cclosep :CtrlP<cr>
+map <LEADER>pp :CtrlP<CR>
+
+Plugin 'kien/tabman.vim'
 let g:tabman_toggle = '<leader>tt'
 let g:tabman_focus  = '<leader>tf'
 
 
-Bundle 'goldfeld/vim-seek'
-
-Bundle 'ScrollColors'
-
-Bundle 'Color-Sampler-Pack'
+Plugin 'goldfeld/vim-seek'
 
 
-nnoremap set pastetoggle=<F4>
+
+set pastetoggle=<LEADER>pt
 
 map <LEADER>G :Gstatus<CR>
 
-"Bundle 'nvie/vim-flake8'
+"Plugin 'nvie/vim-flake8'
 "let g:flake8_ignore = 'E501,W293'
 "autocmd FileType python map <buffer> <leader>pp :call Flake8()<CR>
 
-" Bundle 'scrooloose/nerdtree'
-" map <LEADER>t :NERDTreeToggle %:p<CR>
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 set backspace=indent,eol,start
 
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " " operators, highlighting, run and ipdb breakpoints)
-"Bundle 'klen/python-mode'
+"Plugin 'klen/python-mode'
 " python-mode settings
 
 " don't show lint result every time we save a file
@@ -211,10 +230,10 @@ set backspace=indent,eol,start
 " don't fold python code on open
 "let g:pymode_folding = 0
 
-Bundle "Townk/vim-autoclose"
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
+"Plugin "Townk/vim-autoclose"
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 
 " :Unlink    : Delete a buffer and the file on disk simultaneously.
@@ -226,7 +245,7 @@ Bundle 'tpope/vim-repeat'
 " :SudoWrite : Write a privileged file with sudo.
 " :W         : Write every open window. Handy for kicking off tools like guard.
 
-Bundle "tpope/vim-eunuch"
+"Plugin "tpope/vim-eunuch"
 
 " tab navigation
 map tn :tabn<CR>
@@ -238,10 +257,13 @@ imap <C-S-Right> <ESC>:tabn<CR>
 map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
 
-"Bundle 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
+"
+
+Plugin 'bling/vim-bufferline'
 
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -249,14 +271,20 @@ let g:airline_theme='badwolf'
 
 let g:airline_enable_fugitive=0
 
+"let g:airline#extensions#tabline#enabled = 1
+
 
 set ls=2
 
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
 nmap <LEADER>tb :Tab /
 
-Bundle 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+
+Plugin 'jnwhiteh/vim-golang'
+
+
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 0
@@ -264,13 +292,35 @@ autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 
-Bundle 'rstacruz/sparkup'
+Plugin 'rstacruz/sparkup'
 
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
-Bundle 'wavded/vim-stylus'
+Plugin 'wavded/vim-stylus'
+
+Plugin 'vim-vinegar'
+
+
+":LustyFilesystemExplorer 
+":LustyFilesystemExplorerFromHere 
+":LustyBufferExplorer 
+":LustyBufferGrep (for searching through all open buffers) 
+
+"<Leader>lf  - Opens filesystem explorer. 
+"<Leader>lr  - Opens filesystem explorer at the directory of the current file. 
+"<Leader>lb  - Opens buffer explorer. 
+"<Leader>lg  - Opens buffer grep. 
+
+Plugin 'sjbach/lusty'
+
+call vundle#end()            " required
+filetype plugin indent on 
+
 
 autocmd BufEnter * silent! lcd %:p:h
+
+autocmd FileType raml set filetype=yaml
+
 
 autocmd FileType ruby
       \ if expand('%') =~# '_test\.rb$' |
