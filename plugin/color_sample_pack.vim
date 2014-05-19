@@ -1,0 +1,1 @@
+bundle/Colour-Sampler-Pack/plugin/color_sample_pack.vim
