@@ -119,9 +119,9 @@ Plugin 'ack.vim'
 "Plugin 'mutewinter/vim-indent-guides'
 "let g:indent_guides_auto_colors =  1
 
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-git'
 Plugin 'pangloss/vim-javascript'
 "Plugin "jelera/vim-javascript-syntax", {name: 'vim-js'}
@@ -202,8 +202,15 @@ let g:tabman_focus  = '<leader>tf'
 Plugin 'goldfeld/vim-seek'
 
 
+"change tabs via shift-<direction>
+noremap <S-l> gt
+noremap <S-h> gT
 
-set pastetoggle=<LEADER>pt
+" save files
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+
+set pastetoggle=<leader>z
 
 map <LEADER>G :Gstatus<CR>
 
@@ -260,7 +267,7 @@ imap <C-S-Left> <ESC>:tabp<CR>
 "Plugin 'Lokaltog/vim-powerline'
 "
 
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 
 
 Plugin 'bling/vim-airline'
@@ -298,7 +305,7 @@ Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'wavded/vim-stylus'
 
-Plugin 'vim-vinegar'
+Plugin 'plasticboy/vim-markdown'
 
 
 ":LustyFilesystemExplorer 
@@ -313,22 +320,39 @@ Plugin 'vim-vinegar'
 
 Plugin 'sjbach/lusty'
 
+map - :LustyFilesystemExplorer ~/src<CR>
+
+
+Plugin 'rking/ag.vim'
+let g:agprg="/usr/local/bin/ag --column"
+
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
+map <LEADER>vf :VimFiler ~/src<CR>
+
+Plugin 'fatih/vim-go'
+
+
 call vundle#end()            " required
 filetype plugin indent on 
 
+set nobackup
+set noswapfile
+
 
 autocmd BufEnter * silent! lcd %:p:h
-
+au BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType raml set filetype=yaml
+autocmd FileType md set filetype=markdown
 
 
-autocmd FileType ruby
-      \ if expand('%') =~# '_test\.rb$' |
-      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
-      \ elseif expand('%') =~# '_spec\.rb$' |
-      \  compiler rspec | setl makeprg=rspec\ \"%:p\" |
-      \ else |
-      \  compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
-      \ endif
+"autocmd FileType ruby
+      "\ if expand('%') =~# '_test\.rb$' |
+      "\   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+      "\ elseif expand('%') =~# '_spec\.rb$' |
+      "\  compiler rspec | setl makeprg=rspec\ \"%:p\" |
+      "\ else |
+      "\  compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+      "\ endif
 
 filetype plugin on
