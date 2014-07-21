@@ -11,20 +11,13 @@ call vundle#begin()
 " required! 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'vim-scripts/Colour-Sampler-Pack'
 
-Plugin 'tomasr/molokai'
-
-"Plugin 'altercation/vim-colors-solarized'
-"set background=dark
-"colorscheme solarized
 
 set hidden
 set t_Co=256
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-    color lucius
-    "let g:solarized_termcolors=256
-    "color solarized
 endif
 
 set showcmd
@@ -34,10 +27,9 @@ syntax on
 set ai
 
 
-"if $TERM == "screen-bce"
-    color lucius
-    "let g:solarized_termcolors=256
-"endif
+
+color lucius
+
 
 set cursorline
 set sw=4
@@ -92,7 +84,7 @@ set hlsearch
 
 Plugin 'ScrollColors'
 
-Plugin 'Color-Sampler-Pack'
+
 
 "Plugin config
 
