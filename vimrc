@@ -1,6 +1,5 @@
 set nocompatible
 set shell=/bin/sh
-"filetype plugin on
 
 filetype off
 
@@ -14,83 +13,44 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/Colour-Sampler-Pack'
 
 
-set hidden
-set t_Co=256
-
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-endif
-
-set showcmd
-set showmode
-
-syntax on
-set ai
-
-
-
-color lucius
-
-
-set cursorline
-set sw=4
-set tw=1000
-set tabstop=4
-set smarttab
-set expandtab
-set wrapmargin=1000
-
-set number
-set showmode
-set ic
-set mousef
-set autoread
-set wildmode=list:longest
-set wildmenu
-
 map <F2> :w<CR>
 map <LEADER>w :bd!<CR>
 "imap <C-W> <C-o>:bwipeout!<CR>
 
-map <M-1> :tabn 1<cr>
-map <M-2> :tabn 2<cr>
-map <M-3> :tabn 3<cr>
-map <M-4> :tabn 4<cr>
-map <M-5> :tabn 5<cr>
-map <M-6> :tabn 6<cr>
-map <M-7> :tabn 7<cr>
-map <M-8> :tabn 8<cr>
-map <M-9> :tabn 9<cr>
+"map <M-1> :tabn 1<cr>
+"map <M-2> :tabn 2<cr>
+"map <M-3> :tabn 3<cr>
+"map <M-4> :tabn 4<cr>
+"map <M-5> :tabn 5<cr>
+"map <M-6> :tabn 6<cr>
+"map <M-7> :tabn 7<cr>
+"map <M-8> :tabn 8<cr>
+"map <M-9> :tabn 9<cr>
 
 
-imap <M-1> <C-o>:tabn 1<cr>
-imap <M-2> <C-o>:tabn 2<cr>
-imap <M-3> <C-o>:tabn 3<cr> 
-imap <M-4> <C-o>:tabn 4<cr> 
-imap <M-5> <C-o>:tabn 5<cr> 
-imap <M-6> <C-o>:tabn 6<cr> 
-imap <M-7> <C-o>:tabn 7<cr> 
-imap <M-8> <C-o>:tabn 8<cr> 
-imap <M-9> <C-o>:tabn 9<cr> 
-
-iabbrev pdb; import pdb; pdb.set_trace()
-iabbrev rpdb2; import rpdb2; rpdb2.start_embedded_debugger('0000', fAllowRemote=True)
-
-"set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"imap <M-1> <C-o>:tabn 1<cr>
+"imap <M-2> <C-o>:tabn 2<cr>
+"imap <M-3> <C-o>:tabn 3<cr> 
+"imap <M-4> <C-o>:tabn 4<cr> 
+"imap <M-5> <C-o>:tabn 5<cr> 
+"imap <M-6> <C-o>:tabn 6<cr> 
+"imap <M-7> <C-o>:tabn 7<cr> 
+"imap <M-8> <C-o>:tabn 8<cr> 
+"imap <M-9> <C-o>:tabn 9<cr> 
 
 
-set incsearch
-set hlsearch
 
 Plugin 'ScrollColors'
 
 
-
-"Plugin config
-
-"Plugin 'SuperTab'
-
 Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "context"
+
+Plugin 'SirVer/ultisnips'
+
+"let g:UltiSnipsExpandTrigger = '<LEADER-s>'
+
+Plugin 'honza/vim-snippets'
 
 
 Plugin 'L9'
@@ -98,7 +58,15 @@ Plugin 'FuzzyFinder'
 noremap <LEADER>F :FufFileWithFullCwd<CR>
 noremap <LEADER>f :FufFileWithCurrentBufferDir<CR>
 noremap <LEADER>b :FufBuffer<CR>
-noremap <LEADER>r :FufRenewCache<CR>
+
+function! RenewCaches()
+   execute 'FufRenewCache'
+   execute 'CtrlPClearCache'
+endfunction
+
+
+noremap <LEADER>r :call RenewCaches()<CR>
+
 noremap <LEADER>cl :FufChangeList<CR>
 
 Plugin 'scrooloose/nerdcommenter'
@@ -141,7 +109,7 @@ Plugin 'python.vim'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'mode': 'active',
-                         \ 'active_filetypes': ['javascript'],}
+                         \ 'active_filetypes': ['javascript', 'go'],}
 let g:syntastic_ignore_files = ['\m\c\.html$']
 let g:syntastic_enable_balloons=1
 
@@ -212,7 +180,6 @@ map <LEADER>G :Gstatus<CR>
 
 Plugin 'tpope/vim-fugitive'
 
-set backspace=indent,eol,start
 
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " " operators, highlighting, run and ipdb breakpoints)
@@ -291,7 +258,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 
-Plugin 'rstacruz/sparkup'
+"Plugin 'rstacruz/sparkup'
 
 Plugin 'Lokaltog/vim-easymotion'
 
@@ -324,12 +291,49 @@ map <LEADER>vf :VimFiler ~/src<CR>
 
 Plugin 'fatih/vim-go'
 
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
-call vundle#end()            " required
+
+call vundle#end() 
+
 filetype plugin indent on 
+
+set hidden
+set t_Co=256
+
+"if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+"endif
+
+set showcmd
+set showmode
+
+syntax on
+set ai
+
+color molokai
+
+set cursorline
+set sw=4
+set tw=1000
+set tabstop=4
+set smarttab
+set expandtab
+set wrapmargin=1000
+
+set number
+set showmode
+set ic
+set mousef
+set autoread
+set wildmode=list:longest
+set wildmenu
+
+set incsearch
+set hlsearch
 
 set nobackup
 set noswapfile
+set backspace=indent,eol,start
 
 
 autocmd BufEnter * silent! lcd %:p:h
@@ -337,14 +341,3 @@ au BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType raml set filetype=yaml
 autocmd FileType md set filetype=markdown
 
-
-"autocmd FileType ruby
-      "\ if expand('%') =~# '_test\.rb$' |
-      "\   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
-      "\ elseif expand('%') =~# '_spec\.rb$' |
-      "\  compiler rspec | setl makeprg=rspec\ \"%:p\" |
-      "\ else |
-      "\  compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
-      "\ endif
-
-filetype plugin on
